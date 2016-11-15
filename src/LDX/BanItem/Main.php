@@ -17,6 +17,9 @@ use pocketmine\event\entity\EntityShootBowEvent;
 class Main extends PluginBase implements Listener {
 
   public function onEnable() {
+    If($this->getConfig()->get("enable") == false) {
+       $this->setEnabled(false);
+    }
     $this->saveItems();
     $this->getServer()->getPluginManager()->registerEvents($this,$this);
   }
