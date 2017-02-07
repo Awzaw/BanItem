@@ -5,6 +5,7 @@ namespace LDX\BanItem;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\Player;
+use pocketmine\utils\Config;
 use pocketmine\command\CommandSender;
 use pocketmine\command\Command;
 use pocketmine\event\player\PlayerInteractEvent;
@@ -17,6 +18,9 @@ use pocketmine\event\entity\EntityShootBowEvent;
 class Main extends PluginBase implements Listener {
 
   public function onEnable() {
+    If($this->getConfig()->get("enable") == false) {
+       $this->setEnabled(false);
+    }
     $this->saveItems();
     $this->getServer()->getPluginManager()->registerEvents($this,$this);
   }
